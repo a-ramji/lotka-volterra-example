@@ -25,9 +25,9 @@ You will make your own copy of the repo by *forking* it. By making a fork, you c
 
 -   Visit: [**https://github.com/allisonhorst/lotka-volterra-example**](https://github.com/allisonhorst/lotka-volterra-example)
 
--   Press the \'Fork\' button to make a copy - note the repo is now copied into your account
+-   Press the 'Fork' button to make a copy - note the repo is now copied into your account
 
--   So far, you just have a remote copy. We need a local copy of the repo, that we can work in locally. We do that by *cloning* a repo. Press the \'Code\' button in YOUR copy of the repo. Copy the URL.
+-   So far, you just have a remote copy. We need a local copy of the repo, that we can work in locally. We do that by *cloning* a repo. Press the 'Code' button in YOUR copy of the repo. Copy the URL.
 
 -   Go back to RStudio. Create a new project WITH version control. Paste the URL where prompted, then choose the destination for your new project. Create the project.
 
@@ -39,17 +39,17 @@ The repo contains a single .Rmd (lotka-volterra.Rmd), with information and code 
 \
 Open the .Rmd and knit. We will talk through the code together. A couple of things to note:
 
--   When you knit, the .html doesn\'t appear in the git pane. Why?
+-   When you knit, the .html doesn't appear in the git pane. Why?
 
 -   How does the numerical approximation change if you update the initial conditions? The parameter estimates?
 
 -   Try making changes, then stage \> commit \> push back to your remote repo. Make sure the changes appear there.
 
--   Congratulations! You\'ve adding *forking* and *cloning* to your git toolkit.
+-   Congratulations! You've adding *forking* and *cloning* to your git toolkit.
 
 ## **Command line intro + git**
 
-Here, we\'ll learn a few basic commands to talk with your computer through the command line to navigate around and do some git stuff outside of RStudio.
+Here, we'll learn a few basic commands to talk with your computer through the command line to navigate around and do some git stuff outside of RStudio.
 
 Some basics:
 
@@ -73,7 +73,7 @@ Now for git:
 
 -   Use git add filename.Rmd to stage it (git add . will stage everything)
 
--   Use git commit -m \"a commit message\" to commit to local repo
+-   Use git commit -m "a commit message" to commit to local repo
 
 -   Use git checkout again to check status
 
@@ -85,9 +85,9 @@ Now for git:
 
 ## **Below: additional material ([not]{.underline} done in class)**
 
-In this session, we\'ll see how to use the `deSolve::ode()` function to numerically estimate the solution to the Lotke-Volterra equations for predator-prey populations.
+In this session, we'll see how to use the `deSolve::ode()` function to numerically estimate the solution to the Lotke-Volterra equations for predator-prey populations.
 
-First, we\'ll learn a bit more about how numerical methods for approximating solutions to differential equations work.
+First, we'll learn a bit more about how numerical methods for approximating solutions to differential equations work.
 
 **Credit:** This lesson is closely based on the article (Numerically solving differential equations with R)[[**https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html**](https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html)]
 
@@ -134,7 +134,7 @@ parameters <- c(alpha = .75, beta = 0.8, delta = 0.5, gamma = 1)
 
 # Set the initial condition (prey and predator populations at t = 0).
 # Recall: x = prey, y = predator
-init_cond <- c(x = 5, y = 4)
+init_cond <- c(x = 5, y = 6)
 
 # Prepare the series of differential equations as a function: 
 lk_equations <- function(time, init_cond, parameters) {
@@ -152,6 +152,12 @@ approx_lk <- ode(y = init_cond, times = time, func = lk_equations, parms = param
 class(approx_lk)
 
 # We really want this to be a data frame, and we want both prey (x) and predator (y) to be in the same column -- we'll learn why in EDS 221 (tidy data)
+
+# pivot_longer() function used to turn approx_lk from having x (rabbits) and y (wolves) as separate columns showing numeric values into having a combined "species" column with x and y and their values into a new column called "population" 
+
+# * . html --> * is an inclusive operator telling git ignore to ignore everything and anything .html
+
+
 approx_lk_df <- data.frame(approx_lk) %>% 
   pivot_longer(cols = c(x,y), names_to = "species", values_to = "population")
 
@@ -168,3 +174,4 @@ What happens as you change the different parameters (and re-run the entire code 
 -   $\gamma$ is a mortality rate for predator
 
 ## End
+
