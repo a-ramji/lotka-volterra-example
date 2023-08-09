@@ -13,6 +13,8 @@ library(kableExtra)
 
 Day 3 morning session
 
+Anna Ramji's version EDS212 Day 3 Computer Session 1
+
 **Credit:** This code is closely based on the article [Numerically solving differential equations with R](https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html)
 
 ### The Lotka-Volterra equations
