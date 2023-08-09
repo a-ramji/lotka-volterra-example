@@ -15,6 +15,88 @@ Day 3 morning session
 
 Anna Ramji's version EDS212 Day 3 Computer Session 1
 
+instructions: <https://allisonhorst.github.io/EDS_212_essential-math/comp_session_keys/comp_session_3a.html>
+
+## **Fork and clone a repo**
+
+In this session, you will use existing code in a public repo on GitHub that approximates the solution to the Lotka-Volterra equations.
+
+You will make your own copy of the repo by *forking* it. By making a fork, you create a copy that you can work in separately.
+
+-   Visit: [**https://github.com/allisonhorst/lotka-volterra-example**](https://github.com/allisonhorst/lotka-volterra-example)
+
+-   Press the \'Fork\' button to make a copy - note the repo is now copied into your account
+
+-   So far, you just have a remote copy. We need a local copy of the repo, that we can work in locally. We do that by *cloning* a repo. Press the \'Code\' button in YOUR copy of the repo. Copy the URL.
+
+-   Go back to RStudio. Create a new project WITH version control. Paste the URL where prompted, then choose the destination for your new project. Create the project.
+
+-   You should see that the materials from the remote repo now exist locally in a version controlled R project. Yay!
+
+## **Run existing code**
+
+The repo contains a single .Rmd (lotka-volterra.Rmd), with information and code to numerically approximate solutions to the Lotka-Volterra equations and make a graph.\
+\
+Open the .Rmd and knit. We will talk through the code together. A couple of things to note:
+
+-   When you knit, the .html doesn\'t appear in the git pane. Why?
+
+-   How does the numerical approximation change if you update the initial conditions? The parameter estimates?
+
+-   Try making changes, then stage \> commit \> push back to your remote repo. Make sure the changes appear there.
+
+-   Congratulations! You\'ve adding *forking* and *cloning* to your git toolkit.
+
+## **Command line intro + git**
+
+Here, we\'ll learn a few basic commands to talk with your computer through the command line to navigate around and do some git stuff outside of RStudio.
+
+Some basics:
+
+-   Open the Terminal (outside of RStudio)
+
+-   Use pwd to see where your Terminal currently sees the working directory
+
+-   Use ls to see the contents of the directory
+
+-   Use cd to change to a different downstream directory
+
+-   Use .. to go back upstream
+
+Now for git:
+
+-   Navigate to your current project directory
+
+-   Use git status to see the current git status
+
+-   Make a change to the .Rmd in your project and save
+
+-   Use git add filename.Rmd to stage it (git add . will stage everything)
+
+-   Use git commit -m \"a commit message\" to commit to local repo
+
+-   Use git checkout again to check status
+
+-   Use git pull to pull
+
+-   Use git push to push changes
+
+-   Check with git checkout
+
+## **Below: additional material ([not]{.underline} done in class)**
+
+In this session, we\'ll see how to use the `deSolve::ode()` function to numerically estimate the solution to the Lotke-Volterra equations for predator-prey populations.
+
+First, we\'ll learn a bit more about how numerical methods for approximating solutions to differential equations work.
+
+**Credit:** This lesson is closely based on the article (Numerically solving differential equations with R)[[**https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html**](https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html)]
+
+```         
+library(tidyverse) library(deSolve) library(kableExtra)
+```
+
+## Content Below \~\~\~
+
 **Credit:** This code is closely based on the article [Numerically solving differential equations with R](https://rstudio-pubs-static.s3.amazonaws.com/32888_197d1a1896534397b67fb04e0d4899ae.html)
 
 ### The Lotka-Volterra equations
